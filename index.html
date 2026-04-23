@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bailey Griffiths — Cloud Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #080a0d;
+      --dark:    #0e1117;
+      --card:    #13171f;
+      --border:  #1e2330;
+      --accent:  #3b82f6;
+      --accent2: #60a5fa;
+      --text:    #dde2ee;
+      --muted:   #6b7589;
+      --white:   #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent2); }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky;
+      top: 32px;
+    }
+
+    .avatar-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 20px;
+      border: 2px solid rgba(59,130,246,0.3);
+    }
+
+    .sidebar-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 28px;
+    }
+
+    .sidebar-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-item .dot {
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .contact-item a { color: var(--muted); }
+    .contact-item a:hover { color: var(--accent2); }
+
+    .skill-pill {
+      display: inline-block;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.2);
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin: 0 4px 6px 0;
+    }
+
+    .interest-item {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      padding-left: 12px;
+      position: relative;
+    }
+
+    .interest-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 4px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 50%;
+    }
+
+    /* ── Main content ── */
+    .main { min-width: 0; }
+
+    .section { margin-bottom: 44px; }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 600px;
+    }
+
+    .about-text strong { color: var(--text); font-weight: 500; }
+
+    /* ── Experience cards ── */
+    .exp-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .exp-time {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      white-space: nowrap;
+      background: rgba(59,130,246,0.08);
+      border: 1px solid rgba(59,130,246,0.2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .exp-company {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .exp-details {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .exp-details ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .exp-details ul li {
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+
+    .exp-details ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .project-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── Toolset ── */
+    .toolset {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tool-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .page {
+        grid-template-columns: 1fr;
+        padding: 32px 16px 60px;
+      }
+      .sidebar { position: static; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="avatar-wrap">BG</div>
+    <div class="sidebar-name">Bailey Griffiths</div>
+    <div class="sidebar-title">Cloud Engineer</div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Contact</div>
+      <div class="contact-item"><span class="dot"></span><a href="mailto:brgriffiths98@gmail.com">brgriffiths98@gmail.com</a></div>
+      <div class="contact-item"><span class="dot"></span>0439 028 790</div>
+      <div class="contact-item"><span class="dot"></span>Gold Coast, QLD</div>
+      <div class="contact-item"><span class="dot"></span><a href="https://github.com/hoodiebaz" target="_blank">github.com/hoodiebaz</a></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Core Skills</div>
+      <span class="skill-pill">Cloud Platforms</span>
+      <span class="skill-pill">Scripting &amp; Automation</span>
+      <span class="skill-pill">Monitoring &amp; Logging</span>
+      <span class="skill-pill">Networking</span>
+      <span class="skill-pill">Virtualisation</span>
+      <span class="skill-pill">IaC &amp; DevOps</span>
+      <span class="skill-pill">Architecture</span>
+      <span class="skill-pill">Documentation</span>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Interests</div>
+      <div class="interest-item">Motorbikes &amp; cars</div>
+      <div class="interest-item">Gym &amp; fitness</div>
+      <div class="interest-item">Books &amp; documentaries</div>
+      <div class="interest-item">Homelab &amp; self-hosting</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+
+    <div class="section">
+      <div class="section-label">Profile</div>
+      <div class="section-title">About Me</div>
+      <p class="about-text">
+        Since 2019, I've worked across multiple IT roles in both internal and MSP environments in <strong>London</strong> and on the <strong>Gold Coast</strong>. I'm highly motivated with a proven ability to deliver at a high level across cloud engineering, systems administration, and automation. I have a strong interest in learning new technologies, building systems, and optimising workflows.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Experience</div>
+      <div class="section-title">Employment History</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Cloud Engineer</div>
+          <div class="exp-time">2024 — Present</div>
+        </div>
+        <div class="exp-company">Aspire42 · Internal · Gold Coast, QLD</div>
+        <div class="exp-details">
+          <ul>
+            <li>Managing and optimising cloud infrastructure across Microsoft 365, Azure, and AWS</li>
+            <li>Scoping and delivering cloud &amp; security projects end-to-end</li>
+            <li>Migrated 100+ users and devices from hybrid AD/AzureAD to a full cloud-only environment (Entra + Intune + Defender + AutoPilot)</li>
+            <li>Deployed Windows Defender to 100+ endpoints within a 5-day timeline</li>
+            <li>Built a Microsoft Forms + Power Automate tool to automate internal workflows</li>
+            <li>SharePoint audit, consolidation and restructuring with correct permission structures</li>
+            <li>Log Analytics Workspace &amp; Azure Automations for break-glass account monitoring</li>
+            <li>Automation of on/off-boarding in hybrid and cloud-only environments</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Support Analyst — 3rd Line</div>
+          <div class="exp-time">2023 — 2024</div>
+        </div>
+        <div class="exp-company">Cubit Technology · MSP · London, UK</div>
+        <div class="exp-details">
+          <ul>
+            <li>Supporting 60+ clients across the City of London, remote and on-site</li>
+            <li>Managing Microsoft 365, Azure, Intune, Exchange, SharePoint, and Defender tenancies</li>
+            <li>PowerShell scripting to automate repetitive tasks on-premise and in Azure</li>
+            <li>Security alert processing via Hornet Security, RocketCyber, Duo MFA, and Sentinel One</li>
+            <li>Apple Business Manager, MDM/APN certificate management</li>
+            <li>Physical switch and patch panel maintenance (Cisco Meraki + Unifi)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Deployment Engineer — 2nd Line</div>
+          <div class="exp-time">2021 — 2023</div>
+        </div>
+        <div class="exp-company">Foxtons · Internal · London, UK</div>
+        <div class="exp-details">
+          <ul>
+            <li>On-site and remote support across 60 offices and 1,500+ employees throughout London</li>
+            <li>Bi-weekly onboarding presentations for new starters</li>
+            <li>Machine imaging, software deployment, Windows and Mac OS support</li>
+            <li>Device and user management via SCCM, Azure, AD, 365, and Intune</li>
+            <li>Network and server administration — TCP/IP, DHCP, DNS, printers, file shares</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-role">Service Desk Engineer — 1st Line</div>
+          <div class="exp-time">2019 — 2020</div>
+        </div>
+        <div class="exp-company">Foxtons · Internal · London, UK</div>
+        <div class="exp-details">
+          <ul>
+            <li>First point of contact for 400+ user HQ and 1,500+ remote branches</li>
+            <li>Active Directory and Exchange administration</li>
+            <li>Mobile device setup, hardware repair, Windows and Mac desktop support</li>
+            <li>Cisco telephony service support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Personal</div>
+      <div class="section-title">Projects</div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-title">Linux Ubuntu Homelab</div>
+          <div class="project-desc">Self-hosted and managed Linux Ubuntu server running on a Raspberry Pi 5 within my home network.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">Pi-Hole · DHCP / DNS</div>
+          <div class="project-desc">Network-wide ad and tracker blocking via Pi-Hole, also serving as the primary DHCP and DNS server for the home network.</div>
+        </div>
+        <div class="project-card">
+          <div class="project-title">The Library</div>
+          <div class="project-desc">A blog-style documentation site — a collection of guides built as I learn and implement new systems in my homelab. Hosted on Cloudflare and GitHub.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Technical</div>
+      <div class="section-title">Toolset</div>
+      <div class="toolset">
+        <span class="tool-tag">Microsoft Azure</span>
+        <span class="tool-tag">Amazon AWS</span>
+        <span class="tool-tag">Microsoft 365</span>
+        <span class="tool-tag">Intune / Entra</span>
+        <span class="tool-tag">Windows Server</span>
+        <span class="tool-tag">Linux</span>
+        <span class="tool-tag">Mac OS</span>
+        <span class="tool-tag">PowerShell</span>
+        <span class="tool-tag">Bash</span>
+        <span class="tool-tag">Power Automate</span>
+        <span class="tool-tag">Power BI</span>
+        <span class="tool-tag">Power Apps</span>
+        <span class="tool-tag">SQL / MySQL</span>
+        <span class="tool-tag">Active Directory</span>
+        <span class="tool-tag">Cisco Meraki</span>
+        <span class="tool-tag">Unifi</span>
+        <span class="tool-tag">CI/CD</span>
+        <span class="tool-tag">IaC</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
