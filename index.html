@@ -57,15 +57,17 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      font-weight: 800;
-      color: #000;
       margin-bottom: 20px;
       border: 2px solid rgba(59,130,246,0.3);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .sidebar-name {
@@ -325,7 +327,7 @@
 
   <!-- Sidebar -->
   <aside class="sidebar">
-    <div class="avatar-wrap">BG</div>
+    <div class="avatar-wrap"><img src="profile.png" alt="Bailey Griffiths" /></div>
     <div class="sidebar-name">Bailey Griffiths</div>
     <div class="sidebar-title">Cloud Engineer</div>
 
